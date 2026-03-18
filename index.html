@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Festo - Sistema Automatizado</title>
+
+<style>
+body{
+margin:0;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+}
+
+header{
+background: linear-gradient(90deg,#003366,#0055A5);
+padding:15px 20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+box-shadow:0 2px 10px rgba(0,0,0,0.5);
+}
+
+.header-left{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo{
+width:50px;
+height:50px;
+background:white;
+border-radius:6px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#003366;
+font-weight:bold;
+}
+
+.header-text{
+text-align:left;
+}
+
+.header-text h1{
+margin:0;
+font-size:20px;
+}
+
+.header-text p{
+margin:0;
+font-size:12px;
+opacity:0.8;
+}
+
+nav{
+text-align:center;
+padding:10px;
+background:#111;
+}
+
+nav a{
+color:white;
+margin:0 15px;
+text-decoration:none;
+font-weight:bold;
+}
+
+section{
+padding:40px 20px;
+max-width:1000px;
+margin:auto;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:12px;
+margin-bottom:20px;
+box-shadow:0 0 15px rgba(0,0,0,0.4);
+}
+
+.buttons{
+text-align:center;
+margin-top:20px;
+}
+
+button{
+width:200px;
+height:50px;
+margin:10px;
+border:none;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+color:white;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+.start{ background:#2ecc71; }
+.stop{ background:#e74c3c; }
+.manual{ background:#3498db; }
+
+.status{
+margin-top:20px;
+font-size:18px;
+color:#f1c40f;
+text-align:center;
+}
+
+.step{
+margin:15px 0;
+padding:15px;
+border-left:5px solid #3498db;
+background:rgba(255,255,255,0.05);
+border-radius:8px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#111;
+margin-top:30px;
+}
+
+img{
+border-radius:10px;
+margin:10px;
+box-shadow:0 0 10px black;
+}
+</style>
+
+
+
+</head>
+
+<body>
+
+<header>
+<div class="header-left">
+<div class="logo">SENAI</div>
+<div class="header-text">
+<h1>Sistema Automatizado de Manipulação</h1>
+<p>Projeto Acadêmico - Automação Industrial</p>
+</div>
+</div>
+
+<div>
+<p style="margin:0;font-size:12px;opacity:0.8;">Instituição de Ensino Técnico</p>
+</div>
+</header>
+
+<nav>
+<a href="#sobre">Sobre</a>
+<a href="#controle">Controle</a>
+<a href="#processo">Processo</a>
+</nav>
+
+<section id="sobre">
+<div class="card">
+<h2>Sobre a Bancada Festo 2</h2>
+<p>
+A Festo 2 é uma das bancadas de estudos do SENAI, utilizada para fins acadêmicos na área de automação industrial. Este sistema simula um alimentador de peças industrial, permitindo o aprendizado prático de processos automatizados.
+</p>
+
+<p>
+O equipamento possui como principais componentes mecânicos um atuador pneumático com magazine, um atuador pneumático rotativo e uma ventosa, responsáveis pela manipulação das peças durante o processo.
+</p>
+
+<p>
+Seu funcionamento é baseado na integração de sistemas elétricos e pneumáticos, enquanto sua lógica de controle é realizada por meio de um CLP (Controlador Lógico Programável), amplamente utilizado na indústria.
+</p>
+</div>
+</section>
+
+<section id="controle">
+<div class="card">
+<h2>Painel de Controle</h2>
+
+<div class="buttons">
+<p>Fluxo ilustrativo de operação (botões demonstrativos):</p>
+
+<button class="start" disabled>START</button>
+<button class="stop" disabled>STOP</button>
+
+<br>
+
+<button class="manual" disabled>1. Magazine (Alimentação)</button>
+<button class="manual" disabled>2. Avançar Braço</button>
+<button class="manual" disabled>3. Ativar Vácuo</button>
+<button class="manual" disabled>4. Retornar Braço</button>
+<button class="manual" disabled>5. Desativar Vácuo</button>
+<button class="manual" disabled>6. Sopro (Liberação)</button>
+
+<div class="status">
+Sequência didática: siga os botões da esquerda para a direita para entender o ciclo.
+</div>
+</div>
+
+<div id="status" class="status">
+Status: aguardando comando...
+</div>
+
+</div>
+</section>
+
+<section id="processo">
+<div class="card">
+<h2>Sequência de Operação</h2>
+
+<div class="step"><b>1 - Detecção inicial</b><br>
+O sistema verifica automaticamente a presença de peças através de sensores instalados no final do tubo.
+</div>
+
+<div class="step"><b>2 - Monitoramento</b><br>
+Durante o avanço da alimentação, ocorre o monitoramento contínuo entre sensores de início e fim de curso.
+</div>
+
+<div class="step"><b>3 - Posicionamento</b><br>
+Após a confirmação da peça, o braço mecânico é liberado respeitando os limites de segurança.
+</div>
+
+<div class="step"><b>4 - Captura da peça</b><br>
+O braço avança até o fim de curso, ativando o sistema de vácuo para fixação da peça.
+</div>
+
+<div class="step"><b>5 - Retorno</b><br>
+Com a peça fixada, o braço retorna à posição inicial de forma controlada.
+</div>
+
+<div class="step"><b>6 - Temporização</b><br>
+Uma pausa é aplicada para garantir estabilidade antes da liberação.
+</div>
+
+<div class="step"><b>7 - Liberação</b><br>
+O sistema libera a peça com precisão e se prepara automaticamente para o próximo ciclo.
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="card" style="text-align:center;">
+<h2>Imagens do Sistema</h2>
+<img src="Image_20260312_103946_510.jpeg" width="300">
+<img src="Image_20260312_103951_211 (1).jpeg" width="300">
+</div>
+</section>
+
+<footer>
+© 2026 - Sistema Automatizado Festo
+</footer>
+
+</body>
+</html>
